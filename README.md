@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://github.com/aaskrv/interview-prep">
-    <img src="img/readme.pdf">
+    <img src="img/header.png">
   </a>
 </p>
 
