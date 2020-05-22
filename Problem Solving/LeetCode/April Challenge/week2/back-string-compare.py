@@ -1,0 +1,54 @@
+"""
+- DAY 9 -
+- Backspace String Compare -
+
+Given two strings S and T, return if they are equal when both are typed into empty text editors. # means a backspace character.
+
+Note that after backspacing an empty text, the text will continue empty.
+
+Ex1:
+Input: S = "ab#c", T = "ad#c"
+Output: true
+Explanation: Both S and T become "ac"
+
+Ex2:
+Input: S = "ab##", T = "c#d#"
+Output: true
+Explanation: Both S and T become ""
+
+Ex3:
+Input: S = "a##c", T = "#a#c"
+Output: true
+Explanation: Both S and T become "c".
+
+Note:
+
+1 <= S.length <= 200
+1 <= T.length <= 200
+S and T only contain lowercase letters and '#' characters.
+
+Follow up:
+Can you solve it in O(N) time and O(1) space?
+"""
+
+class Solution:
+    def backspaceCompare(self, S: str, T: str) -> bool:
+        stack1 = []
+        stack2 = []
+        for c in S:
+            if c == "#" and len(stack1) != 0:
+                stack1.pop()
+            elif c == "#" and len(stack1) == 0:
+                continue
+            else:
+                stack1.append(c)
+        
+        for c in T:
+            if c == "#" and len(stack2) != 0:
+                stack2.pop()
+            elif c == "#" and len(stack2) == 0:
+                continue
+            else:
+                stack2.append(c)
+        
+        return sorted(stack1) == sorted(stack2)
